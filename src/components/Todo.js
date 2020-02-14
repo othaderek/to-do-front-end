@@ -8,7 +8,7 @@ export default class Todo extends Component {
         console.log(e.target.checked);
         // UPDATE TODO AND CHANGE CODE TO CONDITIONALLY RENDER THE TODOS
         // debugger
-        
+        this.props.updateTodo(e)
     }
 
     render() {

@@ -3,10 +3,15 @@ import Todo from './Todo'
 import '../ToDoList.css'
 
 export default class ToDoList extends Component{
+
+    updateTodo = (e) => {
+        this.props.updateTodo(e)
+    }
     
+
     render(){
         const mapToDos = () => {
-            return this.props.todos.map( todo => <Todo key={todo.id} todo={todo} /> )
+            return this.props.todos.map( todo => todo.completed == false ? <Todo key={todo.id} todo={todo} updateTodo={this.updateTodo} /> : null )
         }
         console.log(this.props);
         return (

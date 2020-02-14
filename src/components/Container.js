@@ -11,17 +11,21 @@ export class Container extends Component {
     }
 
     componentDidMount(){
+        this.getTodos()
+    }
+
+    getTodos = () => {
         fetch('http://localhost:3000/api/v1/todos')
-            .then( res => res.json())
-            .then( jsonObj => {
-                this.setState({
-                    todos: jsonObj
-                })
+        .then( res => res.json())
+        .then( jsonObj => {
+            this.setState({
+                todos: jsonObj
             })
+        })
     }
 
     addTodo = (todoBody) => { 
-        console.log(todoBody);
+
         fetch('http://localhost:3000/api/v1/todos', {
             method: 'POST',
             headers: {
@@ -41,6 +45,23 @@ export class Container extends Component {
             })
         })
     } 
+
+    updateTodo = (e) => {
+        fetch(`http://localhost:3000/api/v1/todos/${e.target.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+            body: JSON.stringify({
+                completed: e.target.checked,
+            })
+        })
+        .then( res => res.json())
+        console.log("hello");
+        
+    } 
+    
     
 
     render() {
@@ -50,6 +71,7 @@ export class Container extends Component {
                 <ToDoForm addTodo={this.addTodo} />
                 <ToDoList 
                 todos={this.state.todos} 
+                updateTodo={this.updateTodo}
                  />
 
             </div>
