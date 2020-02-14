@@ -1,0 +1,6 @@
+.container {
+    display: grid;
+    /* vertical-align: middle; */
+    justify-content: center;
+    line-height: 3em;
+}
