@@ -24,6 +24,19 @@ export class Container extends Component {
         })
     }
 
+    addNewTodoToState = (newTodo) => {
+        try {
+            this.setState({
+                todos: [...this.state.todos, newTodo]
+            })
+        } catch (error) {
+            console.log(error.message);
+            
+        }
+
+    }
+    
+
     addTodo = (todoBody) => { 
 
         fetch('http://localhost:3000/api/v1/todos', {
@@ -40,13 +53,12 @@ export class Container extends Component {
         })
         .then( res => res.json())
         .then( newTodo => {
-            this.setState({
-                todos: [newTodo, ...this.state.todos]
-            })
+            this.addNewTodoToState(newTodo)
         })
     } 
 
     updateTodo = (e) => {
+        // debugger
         fetch(`http://localhost:3000/api/v1/todos/${e.target.id}`, {
             method: 'PATCH',
             headers: {
@@ -58,8 +70,6 @@ export class Container extends Component {
             })
         })
         .then( res => res.json())
-        console.log("hello");
-        
     } 
     
     

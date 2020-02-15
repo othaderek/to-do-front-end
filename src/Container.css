@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
 .container {
     display: grid;
     /* vertical-align: middle; */
     justify-content: center;
     line-height: 3em;
+    font-family: 'Raleway', sans-serif;
 }

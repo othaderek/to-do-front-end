@@ -33,7 +33,7 @@ export default class ToDoForm extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit} >
-                    <input className="input-field" 
+                    <input className="input-field " 
                     placeholder=" Add a todo" 
                     name="input"
                     onChange={this.handleChange}

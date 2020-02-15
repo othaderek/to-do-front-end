@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 import Todo from './Todo'
 import '../ToDoList.css'
 
-export default class ToDoList extends Component{
 
+export default class ToDoList extends Component{
     updateTodo = (e) => {
         this.props.updateTodo(e)
     }
@@ -11,11 +11,11 @@ export default class ToDoList extends Component{
 
     render(){
         const mapToDos = () => {
-            return this.props.todos.map( todo => todo.completed == false ? <Todo key={todo.id} todo={todo} updateTodo={this.updateTodo} /> : null )
+            return this.props.todos.map( todo => todo.completed === false ? <Todo key={todo.id} todo={todo} updateTodo={this.updateTodo} removeTodo={this.removeTodo} /> : null )
         }
         console.log(this.props);
         return (
-            <div className="todo-list">
+            <div className="todo-list list-group">
                 {mapToDos()}
             </div>
         )
